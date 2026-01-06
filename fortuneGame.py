@@ -1,7 +1,9 @@
 import random
 
-fortune = "null"
-type = "null"
+#---------- Variables ----------
+
+coins = 0
+
 #---------- Subprograms ----------
 
 def fortuneType():
@@ -10,7 +12,6 @@ def fortuneType():
     else:
         return "Negative"
 
-        
 def getFortune(fortune):
     if fortuneType() == "Positive":
         with open("positiveFortunes.txt", "r") as f:
@@ -23,7 +24,28 @@ def getFortune(fortune):
     fortune = fortunes[random.randint(0,4)]
     return fortune
 
+def playerAction(choice):
+    global coins
+    if choice.lower() == "actions":
+        print("possible actions are: getCoins, looseCoins, fortuneRoll, quit, score.")
+        return False
+    elif choice.lower() == "getcoins":
+        coins += int(input("How many coins should be added: "))
+    elif choice.lower() == "loosecoins":
+        coins -= int(input("How many coins do you want to loose: "))
+    elif choice.lower() == "score":
+        print(f"you are on {coins} coins.")
+    elif choice.lower() == "quit":
+        return True
+    return False
+        
+
+def main():
+    while True:
+        choice = input("What would you like to do (type actions to see possible choices): ")
+        if playerAction(choice):
+            break
+
 #---------- Main ----------
 
-fortune = getFortune(fortune)
-print(fortune)
+main()
