@@ -1,0 +1,5 @@
+negative fortune 1,
+negative fortune 2,
+negative fortune 3,
+negative fortune 4,
+negative fortune 
