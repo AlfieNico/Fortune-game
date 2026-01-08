@@ -3,6 +3,8 @@ import random
 #---------- Variables ----------
 
 coins = 0
+level = 0
+xp = 0
 
 #---------- Subprograms ----------
 
@@ -12,7 +14,7 @@ def fortuneType():
     else:
         return "Negative"
 
-def getFortune(fortune):
+def getFortune():
     if fortuneType() == "Positive":
         with open("positiveFortunes.txt", "r") as f:
             fortunes = f.read().split(",")
@@ -27,14 +29,22 @@ def getFortune(fortune):
 def playerAction(choice):
     global coins
     if choice.lower() == "actions":
-        print("possible actions are: getCoins, looseCoins, fortuneRoll, quit, score.")
+        print("possible actions are: getCoins, looseCoins, fortuneRoll, profile, quit.")
         return False
     elif choice.lower() == "getcoins":
         coins += int(input("How many coins should be added: "))
     elif choice.lower() == "loosecoins":
         coins -= int(input("How many coins do you want to loose: "))
-    elif choice.lower() == "score":
+    elif choice.lower() == "profile":
         print(f"you are on {coins} coins.")
+        print(f"your level {level}")
+        print(f"xp untill next level {xp}")
+    elif choice.lower() == "fortuneroll":
+        if coins >= 5:
+            fortune = getFortune()
+            print(fortune)
+        else:
+            print("This costs 5 coins")
     elif choice.lower() == "quit":
         return True
     return False
