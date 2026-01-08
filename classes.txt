@@ -1,0 +1,3 @@
+Mage - has magical powers such as health regen and has higher luck stats but lower physical stats
+Warrior - has high physical stats but low intellectual stats
+Tank - has high health and attack damage but low intellectual stats and attack speed
